@@ -1,0 +1,18 @@
+useDynLib(glmgraph)
+export(glmgraph,cv.glmgraph)
+
+import(Rcpp)
+importFrom(graphics,plot)
+
+S3method(plot,glmgraph)
+S3method(plot, cv.glmgraph)
+importFrom(stats,predict)
+S3method(predict, glmgraph)
+S3method(predict, cv.glmgraph)
+importFrom(stats,coef)
+S3method(coef, glmgraph)
+S3method(coef, cv.glmgraph)
+S3method(print, cv.glmgraph)
+
+
+
