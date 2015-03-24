@@ -24,7 +24,7 @@ type=c("response", "coefficients","class", "nzeros","link"),...)
 	\item{\dots}{Other parameters to \code{predict}}
  }
 
-\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) Graph-constrained Regularization for Sparse Generalized Linear Models. Bioinformatics(submitted)}
+\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) Graph-constrained Regularization for Sparse Generalized Linear Models.(Working paper)}
 \author{Li Chen <li.chen@emory.edu> , Jun Chen <chen.jun2@emory.edu>}
 \seealso{\code{cv.glmgraph},\code{coef.cv.glmgraph}}
 \examples{

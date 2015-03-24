@@ -86,8 +86,8 @@ eps=1e-3,max.iter=2000,dfmax=round(ncol(X)/2),penalty.factor=rep(1,ncol(X)),stan
   		ind <- !is.na(iter[[i]])
      	if (any(is.na(drop(iter[[i]][ind]))) && warn) warning(paste( "Algorithm failed to converge for some values of lambda1 at lambda2: ",lambda2[i]))
   		if(length(iter[[i]][ind])>0){
-  			if(standardize) bt <- unstandardizeX(b[[i]][,ind, drop=F], X.center[nz], X.scale[nz],Y,family=family)
-  			else bt <- b[[i]][,ind, drop=F]*sd(Y)
+  			if(standardize) bt <- unstandardizeX(b[[i]][,ind, drop=FALSE], X.center[nz], X.scale[nz],Y,family=family)
+  			else bt <- b[[i]][,ind, drop=FALSE]*sd(Y)
   			beta <- matrix(0, nrow=(ncol(X)+1), ncol=length(lambda1[ind]))
   			beta[1,] <- bt[1,]
   			beta[nz+1,] <- bt[-1,]
@@ -99,10 +99,12 @@ eps=1e-3,max.iter=2000,dfmax=round(ncol(X)/2),penalty.factor=rep(1,ncol(X)),stan
   			lambda1s[[i]] <- lambda1[ind]
   		}  		
   		##add logLik,df
-  		if(family=="gaussian"){
-  			eta <- Y-X%*%beta[-1,,drop=F]-matrix(rep(1,n))%*%beta[1,,drop=F]
-  			sig2 <- sum(eta^2)/(n-1)  			
-  			loglik[[i]] <- -n/2*log(2*pi*sig2)-sum(eta^2)/2/sig2			
+  		if(family=="gaussian"){  			
+  			eta <- sweep(X %*% beta[-1,,drop=FALSE], 2, beta[1,,drop=FALSE], "+")
+  			p1 <- sweep(eta,1,Y,"-")
+  			sig2 <- apply(p1^2,2,var)
+  			p1 <- apply(p1^2,2,sum)  		
+  			loglik[[i]] <- -n/2*log(2*pi*sig2)-p1/2/sig2			
   		}else if(family=="binomial"){
   			eta <- sweep(X %*% beta[-1,,drop=FALSE], 2, beta[1,,drop=FALSE], "+")
   			p1 <- sweep(eta,1,Y,"*")

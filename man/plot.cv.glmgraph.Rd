@@ -10,7 +10,7 @@
   \item{x}{A \code{"cv.glmgraph"} object.}
   \item{\dots}{Other graphical parameters to \code{plot}}
 }
-\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models. Bioinformatics(submitted)}
+\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models.(Working paper)}
 \author{Li Chen <li.chen@emory.edu> , Jun Chen <chen.jun2@mayo.edu>}
 \seealso{\code{glmgraph}, \code{cv.glmgraph}}
 \examples{

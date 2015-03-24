@@ -11,7 +11,7 @@ Retrieve coefficients from a fitted "cv.glmgraph" object based on the chosen reg
   \item{s}{Either \code{"lambda1.min"} or \code{"lambda1.1se"}. If \code{"lambda1.min"} is used, coefficients of best cross validation criteria(minimum "mse" or "mae" if \code{family} is "gaussian"; maximum "auc" or minimum "deviance" if \code{family} is "binomial") are returned. Otherwise, coefficients based on one-standard error rule are returned. The default value is \code{"lambda1.min"}.}
   \item{\dots}{Other parameters to \code{coef}}
  }
-\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models. Bioinformatics(submitted)}
+\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models.(Working paper)}
 \author{Li Chen <li.chen@emory.edu> , Jun Chen <chen.jun2@mayo.edu>}
 \seealso{\code{predict.cv.glmgraph},\code{cv.glmgraph}}
 \examples{

@@ -21,7 +21,7 @@ auc <- function(Y,predmat){
 		warning("No two classes within fold.")
 		return(rep(0,length(Y)))
 	}
-	R1 <- apply(rprobmat[Y==1,,drop=F],2,sum)
+	R1 <- apply(rprobmat[Y==1,,drop=FALSE],2,sum)
 	umat <- R1-n1*(n1+1)/2
 	umat <- umat/(n1*n0) #ncol(predmat) is length of lambda1 for current lambda2
 	auc <- pmax(umat,1-umat)
@@ -81,15 +81,15 @@ setcritcv <- function(crit,cv.ind,cv.lambda1,cv.lambda2,nlambda1,nlambda2,nfolds
     	for(ifold in seq(nfolds)){
     		whichi <- cv.ind==ifold
 			for(i in seq(cv.lambda2[ifold])){  # different #lambda2 for different fold
-		    	if(type.measure!="auc") outmat[ifold,,i]=apply(crit[whichi,,i,drop=F],2,mean,na.rm=TRUE)
+		    	if(type.measure!="auc") outmat[ifold,,i]=apply(crit[whichi,,i,drop=FALSE],2,mean,na.rm=TRUE)
 		    	else outmat[ifold,seq(cv.lambda1[[ifold]][i]),i] <- auc(Y[whichi],crit[whichi,seq(cv.lambda1[[ifold]][i]),i])
 				good[ifold,seq(cv.lambda1[[ifold]][i]),i] <- 1
 			}
 		}
-		outmat <- outmat[,,seq(nlambda2.nfolds),drop=F] # remove lambda2 without any solution for any fold
+		outmat <- outmat[,,seq(nlambda2.nfolds),drop=FALSE] # remove lambda2 without any solution for any fold
 		Nmat <- matrix(0, nlambda2.nfolds,nlambda1)
 		for(i in seq( nlambda2.nfolds)){
-			Nmat[i,] <- apply(good[,,i,drop=F],2,sum)
+			Nmat[i,] <- apply(good[,,i,drop=FALSE],2,sum)
 		}
 		return(list(crit=outmat,Nmat=Nmat,nlambda2.nfolds=nlambda2.nfolds))
 }

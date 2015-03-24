@@ -27,7 +27,7 @@ plot.cv.glmgraph <- function(x,...){
     	cvm <- x$cvm[[i]]
     	cvsd <- x$cvsd[[i]]
     	lambda1 <- x$obj$lambda1[1:length(cvm)]
-    	plot(x=log(lambda1),y=cvm,ylim=range(cvm-cvsd,cvm+cvsd),ylab=type.measure,xaxt = "n",xlab=expression(lambda[1]),type="n",main= substitute(lambda[2]==p, list(p=format(lambda2[i],scientific=T))))
+    	plot(x=log(lambda1),y=cvm,ylim=range(cvm-cvsd,cvm+cvsd),ylab=type.measure,xaxt = "n",xlab=expression(lambda[1]),type="n",main= substitute(lambda[2]==p, list(p=format(lambda2[i],scientific=TRUE))))
 		error.bars(log(lambda1),cvm-cvsd,cvm+cvsd,width=0.01,col="darkgrey")
   		points(log(lambda1),cvm,pch=20,col="red")
 		axis(side=1,at=log(lambda1),labels=round(lambda1,digits=3),tick=FALSE,line=0)

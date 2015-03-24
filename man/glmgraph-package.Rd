@@ -24,7 +24,7 @@
   \code{coef.glmgraph}\cr
   \code{predict.glmgraph}\cr
 }
-\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen(2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models. Bioinformatics(submitted)}
+\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen(2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models.(Working paper)}
 \author{Li Chen <li.chen@emory.edu>, Jun Chen <jun.chen2@mayo.edu>}
 \keyword{models}
 \keyword{regression}

@@ -22,7 +22,7 @@ Retrieve coefficients from a fitted "glmgraph" object, depending on the user-spe
 	If \code{lambda1} and \code{lambda2} are missing, all coefficients of fitted \code{glmgraph} object will be returned.
     If only \code{lambda1} is missing, then coefficients of specified \code{lambda2} will be returned.
 }
-\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models Bioinformatics(submitted)}
+\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models.(Working paper)}
 \author{Li Chen <li.chen@emory.edu>, Jun Chen <chen.jun2@mayo.edu>}
 \seealso{\code{predict.glmgraph},\code{glmgraph}}
 \examples{

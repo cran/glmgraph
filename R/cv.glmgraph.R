@@ -1,5 +1,5 @@
 
-cv.glmgraph <- function(X, Y, L,..., type.measure=c("mse","mae","deviance","auc"), nfolds=5,trace=T) {
+cv.glmgraph <- function(X, Y, L,..., type.measure=c("mse","mae","deviance","auc"), nfolds=5,trace=TRUE) {
   
   type.measure <- match.arg(type.measure)
     
@@ -83,11 +83,11 @@ cv.glmgraph <- function(X, Y, L,..., type.measure=c("mse","mae","deviance","auc"
 
   for(i in 1:critcv$nlambda2.nfolds) {
   	ind <- critcv$Nmat[i,] >=nfolds
-   	if(all(ind==F)) {
+   	if(all(ind==FALSE)) {
   			warning("No criteria value for all folds for some lambda2, may need to adjust tuning parameters.")
   			next;		
   	}
-	cvm[[i]] <- apply(critcv$crit[,ind,i,drop=F],2,mean,na.rm=TRUE)
+	cvm[[i]] <- apply(critcv$crit[,ind,i,drop=FALSE],2,mean,na.rm=TRUE)
 	cvsd[[i]] <- sqrt( apply(scale(critcv$crit[,ind,i],cvm[[i]],FALSE)^2,2,mean,na.rm=TRUE)/critcv$Nmat[i,ind])
    	if(type.measure=="auc") lmin <- getmin(lambda1[seq(cvm[[i]])],-cvm[[i]],cvsd[[i]])
    	else lmin <- getmin(lambda1[seq(cvm[[i]])],cvm[[i]],cvsd[[i]])

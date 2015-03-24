@@ -3,7 +3,7 @@
 \title{Cross-validation for glmgraph}
 \description{Performs k-fold cross validation for glmgraph}
 \usage{
-cv.glmgraph(X,Y,L,...,type.measure=c("mse","mae","deviance","auc"),nfolds=5,trace=T)
+cv.glmgraph(X,Y,L,...,type.measure=c("mse","mae","deviance","auc"),nfolds=5,trace=TRUE)
 }
 \arguments{
   \item{X}{\code{X} matrix as in \code{glmgraph}.}
@@ -49,7 +49,7 @@ cv.glmgraph(X,Y,L,...,type.measure=c("mse","mae","deviance","auc"),nfolds=5,trac
   \item{beta.min}{Estimated beta with best \code{type.measure} value with the regularization parameter of \code{lambda1.min} and \code{lambda2.min}.}
   \item{beta.1se}{Estimated beta with best \code{type.measure} value with the regularization parameter of \code{lambda1.1se} and \code{lambda2.1se}.}
   }
-\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen(2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models. Bioinformatics(submitted)}
+\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen(2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models.(Working paper)}
 \author{Li Chen <li.chen@emory.edu> , Jun Chen <chen.jun2@mayo.edu>}
 \seealso{\code{glmgraph},\code{coef.cv.glmgraph},\code{predict.cv.glmgraph}}
 \examples{

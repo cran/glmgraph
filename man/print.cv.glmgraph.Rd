@@ -15,7 +15,7 @@ Print a summary of the cv.glmgraph solution path information during cross valida
  	The call prints the \code{cvmat} object from a fitted \code{cv.glmgraph} object.
  	The call also prints the chosen regularization parameters lambda1 and lambda2 along with best \code{cv.type}(minimum "mse" or "mae" if \code{family} is "gaussian"; maximum "auc" or minimum "deviance" if \code{family} is "binomial") after cross validation.
  }
-\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models. Bioinformatics(submitted)}
+\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) glmgraph: Graph-constrained Regularization for Sparse Generalized Linear Models.(Working paper)}
 \author{Li Chen <li.chen@emory.edu> , Jun Chen <chen.jun2@mayo.edu>}
 \seealso{\code{cv.glmgraph}}
 \examples{

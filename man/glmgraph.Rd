@@ -74,7 +74,7 @@ dfmax=round(ncol(X)/2),penalty.factor=rep(1,ncol(X)),standardize=TRUE,warn=FALSE
    \item{df}{A list of the number of nonzero values for each value of \code{lambda1} and \code{lambda2}.}
 }
 
-\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) Graph-constrained Regularization for Sparse Generalized Linear Models. Bioinformatics(submitted)}
+\references{Li Chen. Han Liu. Hongzhe Li. Jun Chen. (2015) Graph-constrained Regularization for Sparse Generalized Linear Models.(Working paper)}
 \author{Li Chen <li.chen@emory.edu>, Jun Chen <chen.jun2@mayo.edu>}
 \seealso{\code{plot.glmgraph}, \code{cv.glmgraph}}
 \examples{
