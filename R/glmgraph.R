@@ -58,6 +58,7 @@ eps=1e-3,max.iter=2000,dfmax=round(ncol(X)/2),penalty.factor=rep(1,ncol(X)),stan
   	
   	b	<- res[[1]]
     iter <- res[[2]]
+       
     lambda2idx <- NULL
     for(i in seq(nlambda2)){
     	if(sum(is.na(iter[[i]]))<nlambda1) {

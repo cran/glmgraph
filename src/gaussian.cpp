@@ -64,13 +64,13 @@ RcppExport SEXP cdfit_gaussian(SEXP X_, SEXP y_, SEXP L_, SEXP diagL_, SEXP pena
 	    	
 	        if(penalty=="lasso")  obj1=cycle_gaussian_lasso (Y, X, L, diagL, b_est1, active_set1, multiplier, _lambda1, _lambda2, standardizeX, 1);
 	    	else if(penalty=="MCP")  obj1=cycle_gaussian_MCP (Y, X, L, diagL, b_est1, active_set1, multiplier, _lambda1, _lambda2, gamma, standardizeX, 1);
-	    	active_set1 = (arma::abs(b_est1(arma::span(1,p))) > eps); 
+	    	active_set1 = (arma::abs(b_est1(arma::span(1,p))) > arma::datum::eps   ); 
 	    	if(arma::all(active_set1==0)) continue;
 	   
 	   	
 	        while (TRUE) {			
 
-	            active_set1 = (arma::abs(b_est1(arma::span(1,p))) > eps   ); 
+	            active_set1 = (arma::abs(b_est1(arma::span(1,p))) > arma::datum::eps   ); 
 	            b_est2=b_est1+1;	
 	            
 	            while (TRUE) {	
@@ -97,14 +97,14 @@ RcppExport SEXP cdfit_gaussian(SEXP X_, SEXP y_, SEXP L_, SEXP diagL_, SEXP pena
 	            if(penalty=="lasso")  obj1=cycle_gaussian_lasso (Y, X, L, diagL, b_est1, arma::ones<arma::uvec>(p), multiplier, _lambda1, _lambda2, standardizeX, 0);
 	    		else if(penalty=="MCP")  obj1=cycle_gaussian_MCP (Y, X, L, diagL, b_est1, arma::ones<arma::uvec>(p), multiplier, _lambda1, _lambda2, gamma, standardizeX, 0);
 	           
-	            active_set2 = (arma::abs(  b_est1(arma::span(1,p)) ) > eps  );
+	            active_set2 = (arma::abs(  b_est1(arma::span(1,p)) ) > arma::datum::eps  );
 	            if (arma::accu(active_set2 != active_set1) <1) break;
 			}
 			
 			
 			if(breakpoint==1) break;
 			
-	        if ( (int) arma::sum(   arma::abs( b_est1(arma::span(1,p)) ) > eps   ) > dfmax   )   {
+	        if ( (int) arma::sum(   arma::abs( b_est1(arma::span(1,p)) ) > arma::datum::eps   ) > dfmax   )   {
 	        	double intercept=b_est1(0);
 	        	b_est1(arma::find(b_est1 > eps)).zeros();
 	        	b_est1(0)=intercept;

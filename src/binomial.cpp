@@ -68,12 +68,12 @@ RcppExport SEXP cdfit_binomial(SEXP X_, SEXP y_, SEXP L_, SEXP diagL_, SEXP pena
 	    	
 	        if(penalty=="lasso")  obj1=cycle_binomial_lasso (Y, X, L, diagL, b_est1, b_est0, active_set1, multiplier, _lambda1, _lambda2,1);
 	    	else if(penalty=="MCP")  obj1=cycle_binomial_MCP (Y, X, L, diagL, b_est1, b_est0, active_set1, multiplier, _lambda1, _lambda2, gamma,mcpapproach,1);
-	    	active_set1 = (arma::abs(b_est1(arma::span(1,p))) > eps); 
+	        active_set1 = (arma::abs(b_est1(arma::span(1,p))) > arma::datum::eps   ); 
 	        if(arma::all(active_set1==0)) continue;
 			
 			
 	        while (TRUE) {															 
-	        	active_set1 = (arma::abs(b_est1(arma::span(1,p))) > eps ); 
+	        	active_set1 = (arma::abs(b_est1(arma::span(1,p))) > arma::datum::eps   ); 
 	    	    b_est2=b_est1+1;	
 	            while (TRUE) {	
 	            	iter += 1;
@@ -97,12 +97,12 @@ RcppExport SEXP cdfit_binomial(SEXP X_, SEXP y_, SEXP L_, SEXP diagL_, SEXP pena
 	           	if(penalty=="lasso")  obj1=cycle_binomial_lasso (Y, X, L, diagL, b_est1, b_est0, arma::ones<arma::uvec>(p), multiplier, _lambda1, _lambda2, 0);
 	    		else if(penalty=="MCP")  obj1=cycle_binomial_MCP (Y, X, L, diagL, b_est1, b_est0, arma::ones<arma::uvec>(p), multiplier, _lambda1, _lambda2, gamma, mcpapproach,0);
 	           
-	            active_set2 = (arma::abs(b_est1(arma::span(1,p))) > eps ); 
+	            active_set2 = (arma::abs(b_est1(arma::span(1,p))) > arma::datum::eps   ); 
 	            if (arma::accu(active_set2 != active_set1) <1) break;
 			}   
 			if(breakpoint==1) break;
 			
-	        if ( (int) arma::sum(   arma::abs( b_est1(arma::span(1,p)) ) > eps ) > dfmax   )   {
+	    	if ( (int) arma::sum(   arma::abs( b_est1(arma::span(1,p)) ) > arma::datum::eps   ) > dfmax   )   {
 	        	if(warn){
 	        		Rcpp::Rcout  << "Exceeds dfmax "<<dfmax<<", for lambda1: " << _lambda1 <<", lambda2:" << _lambda2;
 	            	Rcpp::Rcout  << ". Further lambda1 will not be considered." << std::endl;
@@ -125,6 +125,7 @@ RcppExport SEXP cdfit_binomial(SEXP X_, SEXP y_, SEXP L_, SEXP diagL_, SEXP pena
 	return Rcpp::wrap(res);
 	
 }
+
 
 
 

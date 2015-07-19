@@ -53,7 +53,7 @@
  obj <- glmgraph(X,Y,L,family="gaussian")
  plot(obj)
  betas <- coef(obj)
- betas <- coef(obj,lambda1=c(0.02,0.03))
+ betas <- coef(obj,lambda1=c(0.1,0.2))
  yhat <- predict(obj,X,type="response")
  cv.obj <- cv.glmgraph(X,Y,L)
  plot(cv.obj)
